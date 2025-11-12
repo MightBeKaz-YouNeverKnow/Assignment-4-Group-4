@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "QzIgBLTHxX4=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\pearc\\source\\repos\\Assignment 4-Group4\\Assignment 4-Group4\\Assignment 4-Group4.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\pearc\\.nuget\\packages\\raylib-cs\\7.0.1\\raylib-cs.7.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
