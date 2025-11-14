@@ -24,8 +24,8 @@ namespace MohawkGame2D
         float velocityY2 = 0f;
 
         // Physics (values are in pixels per second and pixels per second^2)
-        float gravity = 1000f;
-        float jumpSpeed = 500f;
+        float gravity = 500f;
+        float jumpSpeed = 250f;
 
         /// <summary>
         ///     Setup runs once before the game loop begins.
@@ -79,11 +79,11 @@ namespace MohawkGame2D
 
             // Player 1 jumping and gravity
             bool onGround1 = player1y >= groundY;
-            if (Raylib.IsKeyPressed(KeyboardKey.Space) || Raylib.IsKeyPressed(KeyboardKey.W))
+            if (Raylib.IsKeyPressed(KeyboardKey.W))
             {
                 if (onGround1)
                 {
-                    velocityY1 = -jumpSpeed;
+                    velocityY1= -jumpSpeed;
                 }
             }
 
