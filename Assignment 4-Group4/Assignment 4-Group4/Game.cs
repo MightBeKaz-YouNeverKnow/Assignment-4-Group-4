@@ -19,10 +19,10 @@ namespace MohawkGame2D
         float player2Speed = 4.0f;
 
         // Player Collision Variables
-        bool playerOneLeftCollidePlayerTwoRight = false;
-        bool playerOneRightCollidePlayerTwoLeft = false;
-        bool playerOneBottomCollidePlayerTwoTop = false;
-        bool playerOneTopCollidePlayerTwoBottom = false;
+        bool playerOneLeftCollidePlayerTwoRight;
+        bool playerOneRightCollidePlayerTwoLeft;
+        bool playerOneBottomCollidePlayerTwoTop;
+        bool playerOneTopCollidePlayerTwoBottom;
         public void Setup()
         {
             Window.SetTitle("Assignment 4 - Group 4");
@@ -75,11 +75,19 @@ namespace MohawkGame2D
             {
                 playerOneLeftCollidePlayerTwoRight = true;
             }
+            else
+            {
+                playerOneLeftCollidePlayerTwoRight = false;
+            }
 
             // Check if Left side of Player 1 collides with Right side of Player 2
             if (player1x - 25 == player2x + 25)
             {
                 playerOneRightCollidePlayerTwoLeft = true;
+            }
+            else
+            {
+                playerOneRightCollidePlayerTwoLeft = false;
             }
 
             // Check if Bottom of Player 1 collides with Top of Player 2
@@ -87,11 +95,19 @@ namespace MohawkGame2D
             {
                 playerOneBottomCollidePlayerTwoTop = true;
             }
+            else
+            {
+                playerOneBottomCollidePlayerTwoTop = false;
+            }
 
             // Check if Top of Player 1 collides with Bottom of Player 2
             if (player1y - 25 == player2y + 25)
             {
                 playerOneTopCollidePlayerTwoBottom = true;
+            }
+            else
+            {
+                playerOneTopCollidePlayerTwoBottom = false;
             }
         }
     }
