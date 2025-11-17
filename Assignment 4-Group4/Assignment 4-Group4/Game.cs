@@ -12,10 +12,16 @@ namespace MohawkGame2D
     public class Game
     {
         // Place your variables here:
+
+        // Player 1 XY position
         float player1x = 0.0f;
         float player1y = 0.0f;
+
+        // Player 2 XY position
         float player2x = 0.0f;
         float player2y = 0.0f;
+
+        // Player Speed
         float player1Speed = 4.0f;
         float player2Speed = 4.0f;
 
@@ -35,22 +41,21 @@ namespace MohawkGame2D
         {
             Window.ClearBackground(Color.OffWhite);
 
+            // Player 1 controls
             if (Raylib.IsKeyDown(KeyboardKey.W))
             {
                 player1y -= player1Speed;
             }
-            if (Raylib.IsKeyDown (KeyboardKey.A)) 
+            if (Raylib.IsKeyDown(KeyboardKey.A))
             {
-             player1x -= player1Speed;
-            }
-            if (Raylib.IsKeyDown(KeyboardKey.S))
-            {
-                player1y += player1Speed;
+                player1x -= player1Speed;
             }
             if (Raylib.IsKeyDown(KeyboardKey.D))
             {
                 player1x += player1Speed;
             }
+
+            // Player 2 controls
             if (Raylib.IsKeyDown(KeyboardKey.Up))
             {
                 player2y -= player2Speed;
@@ -59,17 +64,16 @@ namespace MohawkGame2D
             {
                 player2x -= player2Speed;
             }
-            if (Raylib.IsKeyDown(KeyboardKey.Down))
-            {
-                player2y += player2Speed;
-            }
             if (Raylib.IsKeyDown(KeyboardKey.Right))
             {
                 player2x += player2Speed;
             }
+            
+            // Draw Player 1
             Draw.FillColor = (Color.Red);
             Draw.Circle(player1x, player1y, 25);
            
+            // Draw Player 2
             Draw.FillColor = (Color.Green);
             Draw.Circle(player2x, player2y, 25);
         }
