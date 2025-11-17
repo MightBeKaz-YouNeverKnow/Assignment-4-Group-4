@@ -19,6 +19,9 @@ namespace MohawkGame2D
         float player1Speed = 4.0f;
         float player2Speed = 4.0f;
 
+        //variables for graphics
+
+
         /// <summary>
         ///     Setup runs once before the game loop begins.
         /// </summary>
@@ -26,6 +29,8 @@ namespace MohawkGame2D
         {
             Window.SetTitle("Assignment 4 - Group 4");
             Window.SetSize(1200, 600);
+
+            //load graphics
         }
 
         /// <summary>
