@@ -64,7 +64,16 @@ namespace MohawkGame2D
         }
         void PlayerCollisionDetection()
         {
+            // Check if Right side of Player 1 collides with Left side of Player 2
+            
 
+            // Check if Left side of Player 1 collides with Right side of Player 2
+
+
+            // Check if Bottom of Player 1 collides with Top of Player 2
+
+
+            // Check if Top of Player 1 collides with Bottom of Player 2
         }
     }
 }
