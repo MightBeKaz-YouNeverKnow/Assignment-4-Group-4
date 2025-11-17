@@ -67,6 +67,8 @@ namespace MohawkGame2D
             // Draw Player 2
             Draw.FillColor = (Color.Green);
             Draw.Circle(player2x, player2y, 25);
+
+            PlayerCollisionDetection();
         }
         void PlayerCollisionDetection()
         {
