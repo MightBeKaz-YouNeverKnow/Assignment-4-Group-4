@@ -22,6 +22,7 @@ namespace MohawkGame2D
         //variables for graphics
         Texture2D sonic;
         Texture2D tails;
+        Texture2D platform;
 
         /// <summary>
         ///     Setup runs once before the game loop begins.
@@ -35,6 +36,7 @@ namespace MohawkGame2D
             //load graphics
             sonic = Graphics.LoadTexture("../../../../../assets/graphics/sonic.png");
             tails = Graphics.LoadTexture("../../../../../assets/graphics/tails.png");
+            platform = Graphics.LoadTexture("../../../../../assets/graphics/platform.png");
         }
 
         /// <summary>
@@ -79,10 +81,13 @@ namespace MohawkGame2D
             }
 
             //draw sonic asset
-            Graphics.Draw(sonic, player1x, player1y);
+             Graphics.Draw(sonic, player1x, player1y);
            
-           //draw tails asset
-            Graphics.Draw(tails, player2x, player2y);
+            //draw tails asset
+             Graphics.Draw(tails, player2x, player2y);
+
+            //draw platforms
+             Graphics.Draw(platform, 600, 300);
         }
     }
 
