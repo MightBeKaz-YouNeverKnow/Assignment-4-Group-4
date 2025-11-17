@@ -18,11 +18,6 @@ namespace MohawkGame2D
         float player1Speed = 4.0f;
         float player2Speed = 4.0f;
 
-        // Player Collision Variables
-        bool playerOneLeftCollidePlayerTwoRight;
-        bool playerOneRightCollidePlayerTwoLeft;
-        bool playerOneBottomCollidePlayerTwoTop;
-        bool playerOneTopCollidePlayerTwoBottom;
         public void Setup()
         {
             Window.SetTitle("Assignment 4 - Group 4");
@@ -70,72 +65,34 @@ namespace MohawkGame2D
 
             PlayerCollisionDetection();
         }
-        void PlayerCollisionDetection()
+        public void PlayerCollisionDetection()
         {
-            // Check if Right side of Player 1 collides with Left side of Player 2
-            if (player1x + 25 == player2x - 25)
-            {
-                playerOneLeftCollidePlayerTwoRight = true;
-            }
-            else
-            {
-                playerOneLeftCollidePlayerTwoRight = false;
-            }
-            // Check if Left side of Player 1 collides with Right side of Player 2
-            if (player1x - 25 == player2x + 25)
-            {
-                playerOneRightCollidePlayerTwoLeft = true;
-            }
-            else
-            {
-                playerOneRightCollidePlayerTwoLeft = false;
-            }
-            // Check if Bottom of Player 1 collides with Top of Player 2
-            if (player1y + 25 == player2y - 25)
-            {
-                playerOneBottomCollidePlayerTwoTop = true;
-            }
-            else
-            {
-                playerOneBottomCollidePlayerTwoTop = false;
-            }
-            // Check if Top of Player 1 collides with Bottom of Player 2
-            if (player1y - 25 == player2y + 25)
-            {
-                playerOneTopCollidePlayerTwoBottom = true;
-            }
-            else
-            {
-                playerOneTopCollidePlayerTwoBottom = false;
-            }
+            // Player 1 Sides
+            float playerOneLeft = player1x - 25;
+            float playerOneRight = player1x + 25;
+            float playerOneTop = player1y - 25;
+            float playerOneBottom = player1y + 25;
 
-            /* 
-                SEPERATOR
-            */
+            // Player 2 Sides
+            float playerTwoLeft = player2x - 25;
+            float playerTwoRight = player2x + 25;
+            float playerTwoTop = player2y - 25;
+            float playerTwoBottom = player2y + 25;
 
-            // Bounce Players away from each other (P1 = Left | P2 = Right)
-            if (playerOneLeftCollidePlayerTwoRight == true)
+            // Check Collision
+            bool playerOneLeftCollidePlayerTwoRight = playerOneLeft <= playerTwoRight;
+            bool playerOneRightCollidePlayerTwoLeft = playerOneRight >= playerTwoLeft;
+            bool playerOneTopCollidePlayerTwoBottom = playerOneTop <= playerTwoBottom;
+            bool playerOneBottomCollidePlayerTwoTop = playerOneBottom >= playerTwoTop;
+
+            // Bounce Players away from each other (Left & Right)
+            if (playerOneLeftCollidePlayerTwoRight &&
+                playerOneRightCollidePlayerTwoLeft &&
+                playerOneTopCollidePlayerTwoBottom &&
+                playerOneBottomCollidePlayerTwoTop)
             {
-                player1x -= player1Speed * 2;
-                player2x += player2Speed * 2;
-            }
-            // Bounce Players away from each other (P1 = Right | P2 = Left)
-            if (playerOneRightCollidePlayerTwoLeft == true)
-            {
-                player1x += player1Speed * 2;
-                player2x -= player1Speed * 2;
-            }
-            // Bounce Players away from each other (P1 = Bottom | P2 = Top)
-            if (playerOneBottomCollidePlayerTwoTop == true)
-            {
-                player1y -= player1Speed * 2;
-                player2y += player2Speed * 2;
-            }
-            // Bounce Players away from each other (P1 = Top | P2 = Bottom)
-            if (playerOneTopCollidePlayerTwoBottom == true)
-            {
-                player1y += player1Speed * 2;
-                player2y -= player1Speed * 2;
+                player1Speed = -player1Speed;
+                player2Speed = -player2Speed;
             }
         }
     }
