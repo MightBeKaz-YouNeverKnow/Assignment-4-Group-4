@@ -24,7 +24,7 @@ namespace MohawkGame2D
         /// </summary>
         public void Setup()
         {
-            Window.SetTitle("Assignment 4 - Group 4");
+            Window.SetTitle("Plumber The Hedgehog");
             Window.SetSize(1200, 600);
         }
 
