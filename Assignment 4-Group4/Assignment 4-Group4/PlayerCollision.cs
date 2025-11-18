@@ -5,5 +5,9 @@ namespace MohawkGame2D
 {
     public class PlayerCollision
     {
+        public void CollisionDetection()
+        {
+
+        }
     }
 }
