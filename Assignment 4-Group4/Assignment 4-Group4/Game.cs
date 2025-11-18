@@ -8,19 +8,6 @@ namespace MohawkGame2D
     {
         PlayerOne playerOne = new PlayerOne();
         PlayerTwo playerTwo = new PlayerTwo();
-
-        // Player 1 XY position
-        float player1x = 0.0f;
-        float player1y = 0.0f;
-
-        // Player 2 XY position
-        float player2x = 0.0f;
-        float player2y = 0.0f;
-
-        // Player Speed
-        float player1Speed = 4.0f;
-        float player2Speed = 4.0f;
-
         public void Setup()
         {
             Window.SetTitle("Assignment 4 - Group 4");
