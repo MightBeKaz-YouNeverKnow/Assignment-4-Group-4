@@ -5,7 +5,7 @@ namespace MohawkGame2D
 {
     public class PlayerCollision
     {
-        public void CollisionDetection(Player playerOne, PlayerTwo playerTwo)
+        public void CollisionDetection(Player playerOne, Player playerTwo)
         {
             // Player 1 Sides
             float playerOneLeft = playerOne.position.X - 25;
