@@ -19,25 +19,19 @@ namespace MohawkGame2D
             float playerTwoTop = playerTwo.position.Y - 25;
             float playerTwoBottom = playerTwo.position.Y + 25;
 
-            // Check Collision
-            bool playerOneLeftCollidePlayerTwoRight = playerOneLeft <= playerTwoRight;
-            bool playerOneRightCollidePlayerTwoLeft = playerOneRight >= playerTwoLeft;
-            bool playerOneTopCollidePlayerTwoBottom = playerOneTop <= playerTwoBottom;
-            bool playerOneBottomCollidePlayerTwoTop = playerOneBottom >= playerTwoTop;
-
             // Bounce Players away from each other (Left & Right)
-            if (playerOneLeftCollidePlayerTwoRight &&
-                playerOneRightCollidePlayerTwoLeft)
+            if (playerOneLeft <= playerTwoRight &&
+                playerOneRight >= playerTwoLeft)
             {
                 playerOne.velocity.X = -playerOne.velocity.X;
                 playerTwo.velocity.X = -playerTwo.velocity.X;
             }
             // Bounce Players away from each other (Top & Bottom)
-            if (playerOneTopCollidePlayerTwoBottom &&
-                playerOneBottomCollidePlayerTwoTop)
+            if (playerOneTop <= playerTwoBottom &&
+                playerOneBottom >= playerTwoTop)
             {
                 playerOne.velocity.Y = -playerOne.velocity.Y;
-                playerTwo.velocity.Y -=playerTwo.velocity.Y;
+                playerTwo.velocity.Y = -playerTwo.velocity.Y;
             }
         }
     }
