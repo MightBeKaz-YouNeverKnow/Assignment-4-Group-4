@@ -5,7 +5,7 @@ namespace MohawkGame2D
 {
     public class PlayerCollision
     {
-        public void CollisionDetection(PlayerOne playerOne, PlayerTwo playerTwo)
+        public void CollisionDetection(Player playerOne, PlayerTwo playerTwo)
         {
             // Player 1 Sides
             float playerOneLeft = playerOne.position.X - 25;
@@ -30,8 +30,8 @@ namespace MohawkGame2D
             if (playerOneTop <= playerTwoBottom &&
                 playerOneBottom >= playerTwoTop)
             {
-                playerOne.velocity.Y = -playerOne.velocity.Y;
-                playerTwo.velocity.Y = -playerTwo.velocity.Y;
+                //playerOne.velocity.Y = -playerOne.velocity.Y;
+                //playerTwo.velocity.Y = -playerTwo.velocity.Y;
             }
         }
     }
