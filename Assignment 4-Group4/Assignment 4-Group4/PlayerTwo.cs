@@ -16,6 +16,7 @@ namespace MohawkGame2D
             Draw.Circle(position.X, position.Y, 25);
 
             PlayerTwoControls();
+            PlayerTwoGravity();
         }
         public void PlayerTwoControls()
         {
@@ -33,6 +34,18 @@ namespace MohawkGame2D
             if (Input.IsKeyboardKeyDown(KeyboardInput.Right))
             {
                 position.X += 10;
+            }
+        }
+        public void PlayerTwoGravity()
+        {
+            // Calculate Player 2 Gravity
+            velocity += new Vector2(0, 40) * Time.DeltaTime;
+            position += velocity;
+
+            if (position.Y + 25 > Window.Height)
+            {
+                position.Y = Window.Height - 25;
+                velocity.Y = 0;
             }
         }
     }
