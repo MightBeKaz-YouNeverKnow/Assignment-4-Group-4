@@ -7,6 +7,7 @@ namespace MohawkGame2D
     public class Game
     {
         PlayerOne playerOne = new PlayerOne();
+        PlayerTwo playerTwo = new PlayerTwo();
 
         // Player 1 XY position
         float player1x = 0.0f;
@@ -30,6 +31,7 @@ namespace MohawkGame2D
             Window.ClearBackground(Color.OffWhite);
 
             playerOne.Setup();
+            playerTwo.Setup();
             PlayerCollisionDetection();
         }
         public void PlayerCollisionDetection()
