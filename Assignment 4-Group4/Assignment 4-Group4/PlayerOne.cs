@@ -37,5 +37,17 @@ namespace MohawkGame2D
                 position.X += 10;
             }
         }
+        public void PlayerOneGravity()
+        {
+            // Calculate Player 1 Gravity
+            velocity += new Vector2(0, 40) * Time.DeltaTime;
+            position += velocity;
+
+            if (position.Y + 25 > Window.Height)
+            {
+                position.Y = Window.Height - 25;
+                velocity.Y = 0;
+            }
+        }
     }
 }
