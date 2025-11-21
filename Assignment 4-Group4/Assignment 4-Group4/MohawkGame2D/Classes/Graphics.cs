@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Numerics;
 /*////////////////////////////////////////////////////////////////////////
@@ -154,6 +155,11 @@ namespace MohawkGame2D
         {
             loadedTextures.Remove(texture.FilePath);
             Raylib.UnloadTexture(texture);
+        }
+
+        internal static void Draw(Texture2D sonic, float x)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
