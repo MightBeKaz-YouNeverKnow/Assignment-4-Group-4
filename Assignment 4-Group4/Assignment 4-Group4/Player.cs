@@ -7,9 +7,11 @@ namespace MohawkGame2D
     {
         public Vector2 position = new Vector2(0, 0);
         public Vector2 velocity;
+        public int size = 25;
 
-        // Transparent Hitbox
-        Color hitbox = new Color(0, 0, 0, 30);
+        // Color of Player + Transparent Hitbox
+        public Color playerColour;
+        //Color hitbox = new Color(0, 0, 0, 30);
 
         // Keyboard Input Controls
         public KeyboardInput keyJump;
@@ -17,25 +19,15 @@ namespace MohawkGame2D
         public KeyboardInput keyRight;
         public void Setup()
         {
-            // Draw Player 1
+            // Draw Player
             Draw.LineSize = 1;
             Draw.LineColor = Color.Black;
-            Draw.FillColor = Color.Red;
-            Draw.Circle(position.X + 100, position.Y + 500, 25);
-            // Player 1 Transparent Hitbox
-            Draw.LineSize = 0;
-            Draw.FillColor = hitbox;
-            Draw.Square(position.X + 75, position.Y + 475, 25 * 2);
-
-            // Draw Player 2
-            Draw.LineSize = 1;
-            Draw.LineColor = Color.Black;
-            Draw.FillColor = Color.Green;
-            Draw.Circle(position.X + 1100, position.Y + 500, 25);
-            // Player 2 Transparent Hitbox
-            Draw.LineSize = 0;
-            Draw.FillColor = hitbox;
-            Draw.Square(position.X + 1075, position.Y + 475, 25 * 2);
+            Draw.FillColor = playerColour;
+            Draw.Circle(position.X, position.Y, size);
+            //// Player Transparent Hitbox
+            //Draw.LineSize = 0;
+            //Draw.FillColor = hitbox;
+            //Draw.Square(position.X - size, position.Y - size, size * 2);
 
             PlayerControls();
             PlayerGravity();
@@ -65,9 +57,9 @@ namespace MohawkGame2D
             position += velocity;
 
             // Ensures Player doesn't fall off map
-            if (position.Y + 25 > Window.Height)
+            if (position.Y + size > Window.Height)
             {
-                position.Y = Window.Height - 25;
+                position.Y = Window.Height - size;
                 velocity.Y = 0;
             }
         }
