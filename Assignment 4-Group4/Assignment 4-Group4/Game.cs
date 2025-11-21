@@ -5,6 +5,7 @@ namespace MohawkGame2D
 {
     public class Game
     {
+<<<<<<< HEAD
         // Call Player Class twice to create 2 Players
         Player playerOne = new Player();
         Player playerTwo = new Player();
@@ -12,6 +13,30 @@ namespace MohawkGame2D
         {
             Window.SetTitle("Plumber The Hedgehog");
             Window.SetSize(1200, 600);
+=======
+        // Place your variables here:
+       
+
+        //variables for graphics
+        Texture2D sonic;
+        Texture2D tails;
+        Texture2D platform;
+
+        /// <summary>
+        ///     Setup runs once before the game loop begins.
+        /// </summary>
+        public void Setup()
+        {
+            //general config
+            Window.SetTitle("Assignment 4 - Group 4");
+            Window.SetSize(1200, 600);
+
+            //load graphics
+            sonic = Graphics.LoadTexture("../../../../../assets/graphics/sonic.png");
+            tails = Graphics.LoadTexture("../../../../../assets/graphics/tails.png");
+            platform = Graphics.LoadTexture("../../../../../assets/graphics/platform.png");
+        }
+>>>>>>> Grace/Assets
 
             // Player 1 colour + spawn position
             playerOne.playerColour = Color.Red;
@@ -35,6 +60,7 @@ namespace MohawkGame2D
         {
             Window.ClearBackground(Color.OffWhite);
 
+<<<<<<< HEAD
             // Draw Players
             playerOne.Setup();
             playerTwo.Setup();
@@ -70,6 +96,18 @@ namespace MohawkGame2D
                 playerTwo.PlayerControls();
                 playerTwo.PlayerGravity();
             }
+=======
+          
+
+            //draw sonic asset
+             Graphics.Draw(sonic, playeOne.position.X, playerOne.position.Y);
+           
+            //draw tails asset
+             Graphics.Draw(tails, playerTwo.position.X, playerTwo.position.Y);
+
+            //draw platforms
+             Graphics.Draw(platform, 600, 300);
+>>>>>>> Grace/Assets
         }
     }
 }
