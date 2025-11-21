@@ -46,39 +46,7 @@ namespace MohawkGame2D
         {
             Window.ClearBackground(Color.OffWhite);
 
-            //player movement
-            if (Raylib.IsKeyDown(KeyboardKey.W))
-            {
-                player1y -= player1Speed;
-            }
-            if (Raylib.IsKeyDown (KeyboardKey.A)) 
-            {
-             player1x -= player1Speed;
-            }
-            if (Raylib.IsKeyDown(KeyboardKey.S))
-            {
-                player1y += player1Speed;
-            }
-            if (Raylib.IsKeyDown(KeyboardKey.D))
-            {
-                player1x += player1Speed;
-            }
-            if (Raylib.IsKeyDown(KeyboardKey.Up))
-            {
-                player2y -= player2Speed;
-            }
-            if (Raylib.IsKeyDown(KeyboardKey.Left))
-            {
-                player2x -= player2Speed;
-            }
-            if (Raylib.IsKeyDown(KeyboardKey.Down))
-            {
-                player2y += player2Speed;
-            }
-            if (Raylib.IsKeyDown(KeyboardKey.Right))
-            {
-                player2x += player2Speed;
-            }
+          
 
             //draw sonic asset
              Graphics.Draw(sonic, player1x, player1y);
