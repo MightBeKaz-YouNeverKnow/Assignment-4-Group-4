@@ -12,12 +12,7 @@ namespace MohawkGame2D
     public class Game
     {
         // Place your variables here:
-        float player1x = 100.0f;
-        float player1y = 400.0f;
-        float player2x = 850.0f;
-        float player2y = 400.0f;
-        float player1Speed = 4.0f;
-        float player2Speed = 4.0f;
+       
 
         //variables for graphics
         Texture2D sonic;
