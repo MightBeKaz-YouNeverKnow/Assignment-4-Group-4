@@ -49,9 +49,13 @@ namespace MohawkGame2D
             {
                 playerOne.velocity.X = 0;
                 playerOne.velocity.Y = 0;
+                playerOne.position.X -= 5;
+                playerOne.position.Y -= 5;
 
                 playerTwo.velocity.X = 0;
                 playerTwo.velocity.Y = 0;
+                playerTwo.position.X += 5;
+                playerTwo.position.Y += 5;
             }
             else 
             {   
