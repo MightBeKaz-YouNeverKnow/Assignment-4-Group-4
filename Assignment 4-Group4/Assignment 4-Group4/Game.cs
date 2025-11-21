@@ -5,7 +5,8 @@ namespace MohawkGame2D
 {
     public class Game
     {
-<<<<<<< HEAD
+        
+
         // Call Player Class twice to create 2 Players
         Player playerOne = new Player();
         Player playerTwo = new Player();
@@ -13,7 +14,7 @@ namespace MohawkGame2D
         {
             Window.SetTitle("Plumber The Hedgehog");
             Window.SetSize(1200, 600);
-=======
+        }
         // Place your variables here:
        
 
@@ -36,10 +37,10 @@ namespace MohawkGame2D
             tails = Graphics.LoadTexture("../../../../../assets/graphics/tails.png");
             platform = Graphics.LoadTexture("../../../../../assets/graphics/platform.png");
         }
->>>>>>> Grace/Assets
 
-            // Player 1 colour + spawn position
-            playerOne.playerColour = Color.Red;
+
+        // Player 1 colour + spawn position
+        playerOne.playerColour = Color.Red;
             playerOne.position.X = 100;
             playerOne.position.Y = 500;
             // Player 1 controls
@@ -55,12 +56,13 @@ namespace MohawkGame2D
             playerTwo.keyJump = KeyboardInput.Up;
             playerTwo.keyLeft = KeyboardInput.Left;
             playerTwo.keyRight = KeyboardInput.Right;
-        }
+        
+
         public void Update()
         {
             Window.ClearBackground(Color.OffWhite);
 
-<<<<<<< HEAD
+
             // Draw Players
             playerOne.Setup();
             playerTwo.Setup();
@@ -87,8 +89,8 @@ namespace MohawkGame2D
                 playerTwo.position.X += 5;
                 playerTwo.position.Y += 5;
             }
-            else 
-            {   
+            else
+            {
                 // If NOT colliding, Call Player Controls & Gravity
                 playerOne.PlayerControls();
                 playerOne.PlayerGravity();
@@ -96,18 +98,19 @@ namespace MohawkGame2D
                 playerTwo.PlayerControls();
                 playerTwo.PlayerGravity();
             }
-=======
-          
+        }
 
-            //draw sonic asset
-             Graphics.Draw(sonic, playeOne.position.X, playerOne.position.Y);
+        //Grace/Assets
+
+        //draw sonic asset
+        Graphics.Draw(sonic, playeOne.position.X, playerOne.position.Y);
            
             //draw tails asset
              Graphics.Draw(tails, playerTwo.position.X, playerTwo.position.Y);
 
             //draw platforms
-             Graphics.Draw(platform, 600, 300);
->>>>>>> Grace/Assets
+             Graphics.Draw(platform, )600, 300);
+
         }
     }
 }
