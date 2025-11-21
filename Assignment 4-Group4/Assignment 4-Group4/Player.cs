@@ -28,9 +28,6 @@ namespace MohawkGame2D
             //Draw.LineSize = 0;
             //Draw.FillColor = hitbox;
             //Draw.Square(position.X - size, position.Y - size, size * 2);
-
-            PlayerControls();
-            PlayerGravity();
         }
         public void PlayerControls()
         {

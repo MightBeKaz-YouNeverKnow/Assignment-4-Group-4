@@ -53,7 +53,14 @@ namespace MohawkGame2D
                 playerTwo.velocity.X = 0;
                 playerTwo.velocity.Y = 0;
             }
-            else { }
+            else 
+            {   
+                playerOne.PlayerControls();
+                playerOne.PlayerGravity();
+
+                playerTwo.PlayerControls();
+                playerTwo.PlayerGravity();
+            }
 
             //// Calculate Player Positions from each other
             //Vector2 playerOnePosition = playerOne.position;
