@@ -1,0 +1,37 @@
+-=- ISSUES PT.1 -=-
+
+- Current Collision Detection code heavily relies on Vector2 position & velocity
+- Current Player Movement code heavily relies on floats
+- Breakpoint reveals that despite Player spawn positions are at different areas on the screen, their XY coords are still equal due to floats
+
+-=- POSSIBLE SOLUTIONS PT.1 -=-
+
+- Rewrite Player Movement code to utilize Vector2 position & velocity instead
+- After rewriting Player Movement, reattempt integrating Collision Detection code
+
+-=- ISSUES PT.2 -=-
+
+- Players when spawned in seem to vibrate and gravity isn't working correctly
+- Players still do not collide with each other
+
+-=- POSSIBLE SOLUTIONS PT.2 -=-
+
+- Re-reviewing modules on Vector2 and Collision
+- Rewriting Collision Detection code to fit with intersecting circles instead
+- Comparing distance between Players to Player Radius
+
+-=- ISSUES PT.3 -=-
+
+- Players still move through each other, however they now do land on top of each other, however they do slowly fall through each other
+
+-=- POSSIBLE SOLUTIONS PT.3 -=-
+
+- Removed code to call Player Controls & Gravity function from Player Setup function and placed it inside of Collision Detection function instead
+
+-=- ISSUES PT.4 -=-
+
+- Players now get stuck on each other when colliding horizontally
+
+-=- POSSIBLE SOLUTIONS PT.4 -=-
+
+- Added in code in the Collision Detection where once both Players velocities hit 0, their positions would also shift by 5 pixels.
