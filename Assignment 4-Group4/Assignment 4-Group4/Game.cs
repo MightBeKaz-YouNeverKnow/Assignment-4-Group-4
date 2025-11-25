@@ -1,8 +1,6 @@
-﻿// Include the namespaces (code libraries) you need below.
-
-using System;
+﻿using System;
 using System.Numerics;
-using Raylib_cs;
+//using Raylib_cs;
 
 namespace MohawkGame2D
 {
@@ -64,16 +62,16 @@ namespace MohawkGame2D
             CollisionDetection();
 
             // Draw assets
-
-            Graphics.Draw(sonic, playerOne.position);
-
-            Graphics.Draw(tails, playerTwo.position);
+           
+             Graphics.Draw(sonic, playerOne.position);
+            
+             Graphics.Draw(tails, playerTwo.position);
 
             // Draw a platform at a fixed position
-
-
-            Graphics.Draw(platform, 600, 300);
-
+            
+            
+                Graphics.Draw(platform, 600, 300);
+            
             // Draw players (circles)
             playerOne.Setup();
             playerTwo.Setup();
@@ -110,5 +108,4 @@ namespace MohawkGame2D
             }
         }
     }
-
 }
