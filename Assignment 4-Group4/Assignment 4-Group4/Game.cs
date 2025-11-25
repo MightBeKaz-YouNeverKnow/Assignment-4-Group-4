@@ -1,20 +1,18 @@
 ﻿// Include the namespaces (code libraries) you need below.
-using Raylib_cs;
+
 using System;
 using System.Numerics;
+using Raylib_cs;
 
-// The namespace your code is in.
 namespace MohawkGame2D
 {
-    /// <summary>
-    ///     Your game code goes inside this class!
-    /// </summary>
     public class Game
     {
-        // Place your variables here:
-       
+        // Two players
+        Player playerOne = new Player();
+        Player playerTwo = new Player();
 
-        //variables for graphics
+        // Graphics
         Texture2D sonic;
         Texture2D tails;
         Texture2D platform;
@@ -24,33 +22,92 @@ namespace MohawkGame2D
         /// </summary>
         public void Setup()
         {
-            //general config
+            // Window configuration
             Window.SetTitle("Assignment 4 - Group 4");
             Window.SetSize(1200, 600);
 
-            //load graphics
+            // Load graphics (paths are relative to executable; adjust if needed)
             sonic = Graphics.LoadTexture("../../../../../assets/graphics/sonic.png");
             tails = Graphics.LoadTexture("../../../../../assets/graphics/tails.png");
             platform = Graphics.LoadTexture("../../../../../assets/graphics/platform.png");
+
+            // Initialize player one
+            playerOne.playerColour = Color.Red;
+            playerOne.position.X = 100;
+            playerOne.position.Y = 500;
+            playerOne.keyJump = KeyboardInput.W;
+            playerOne.keyLeft = KeyboardInput.A;
+            playerOne.keyRight = KeyboardInput.D;
+
+            // Initialize player two
+            playerTwo.playerColour = Color.Green;
+            playerTwo.position.X = 1100;
+            playerTwo.position.Y = 500;
+            playerTwo.keyJump = KeyboardInput.Up;
+            playerTwo.keyLeft = KeyboardInput.Left;
+            playerTwo.keyRight = KeyboardInput.Right;
         }
 
-        /// <summary>
-        ///     Update runs every frame.
-        /// </summary>
         public void Update()
         {
+            // Clear background
             Window.ClearBackground(Color.OffWhite);
 
-          
+            // Run controls and physics for both players
+            playerOne.PlayerControls();
+            playerOne.PlayerGravity();
 
-            //draw sonic asset
-             Graphics.Draw(sonic, player1x, player1y);
-           
-            //draw tails asset
-             Graphics.Draw(tails, player2x, player2y);
+            playerTwo.PlayerControls();
+            playerTwo.PlayerGravity();
 
-            //draw platforms
-             Graphics.Draw(platform, 600, 300);
+            // Handle collisions between players
+            CollisionDetection();
+
+            // Draw assets
+
+            Graphics.Draw(sonic, playerOne.position);
+
+            Graphics.Draw(tails, playerTwo.position);
+
+            // Draw a platform at a fixed position
+
+
+            Graphics.Draw(platform, 600, 300);
+
+            // Draw players (circles)
+            playerOne.Setup();
+            playerTwo.Setup();
+        }
+
+        private void CollisionDetection()
+        {
+            float distanceBetweenPlayers = Vector2.Distance(playerOne.position, playerTwo.position);
+            float sumOfPlayerRadius = playerOne.size + playerTwo.size;
+
+            if (distanceBetweenPlayers <= 0f)
+            {
+                // Prevent divide by zero; nudge players apart
+                playerOne.position.X -= 1;
+                playerTwo.position.X += 1;
+                playerOne.velocity = Vector2.Zero;
+                playerTwo.velocity = Vector2.Zero;
+                return;
+            }
+
+            if (distanceBetweenPlayers < sumOfPlayerRadius)
+            {
+                // Compute overlap and separate players along the collision normal
+                float overlap = sumOfPlayerRadius - distanceBetweenPlayers;
+                Vector2 direction = Vector2.Normalize(playerOne.position - playerTwo.position);
+
+                // Move each player half the overlap in opposite directions
+                playerOne.position += direction * (overlap * 0.5f);
+                playerTwo.position -= direction * (overlap * 0.5f);
+
+                // Zero their velocities to stop them from sticking
+                playerOne.velocity = Vector2.Zero;
+                playerTwo.velocity = Vector2.Zero;
+            }
         }
     }
 
