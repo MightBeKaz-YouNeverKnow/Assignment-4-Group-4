@@ -29,6 +29,24 @@ namespace MohawkGame2D
             // Movement of the platforms
             position += velocity * Time.DeltaTime;
 
+            // Constrains the platforms to the game window
+            if (position.X <= Window.Width) // If platform bumps the left side of the window, reverse velocity
+            {
+                velocity = -velocity;
+            }
+            if (position.X + width >= Window.Width) // If platform bumps the right side of the window, reverse velocity
+            {
+                velocity = -velocity;
+            }
+            if (position.Y <= Window.Height) // If platform bumps the top of the window, reverse velocity
+            {
+                velocity = -velocity;
+            }
+            if (position.Y + height >= Window.Height) // If platform bumps the bottom of the window, reverse velocity
+            {
+                velocity = -velocity;
+            }
+
             // Draw the platforms
             Draw.LineSize = 1;
             Draw.LineColor = color;
