@@ -41,10 +41,9 @@ namespace MohawkGame2D
         {
             if (!active) return;
 
-            Draw.LineSize = 1;
-            Draw.LineColor = Color.Black;
-            Draw.FillColor = Color.Yellow;
-            Draw.Circle(position.X, position.Y, size);
+            // Replace Draw.LineSize, Draw.LineColor, Draw.FillColor with Raylib drawing functions
+            Raylib.DrawCircle((int)position.X, (int)position.Y, size, Color.Yellow);
+            Raylib.DrawCircleLines((int)position.X, (int)position.Y, size, Color.Black);
         }
 
         /// <summary>
