@@ -29,11 +29,11 @@ namespace MohawkGame2D
 
             // Load graphics (paths are relative to executable; adjust if needed)
             ground = Graphics.LoadTexture("../../../../../assets/graphics/ground.png");
-            plumber = Graphics.LoadTexture("../../../../../assets/graphics/plumber.png");
-            fausta = Graphics.LoadTexture("../../../../../assets/graphics/fausta.png");
-            platform = Graphics.LoadTexture("../../../../../assets/graphics/platform.png");
-            ring = Graphics.LoadTexture("../../../../../assets/graphics/ring.png");
-            iceFlower = Graphics.LoadTexture("../../../../../assets/graphics/ice flower.png");
+            plumber = Graphics.LoadTexture("../../../../../assets/graphics/plumberS.png");
+            fausta = Graphics.LoadTexture("../../../../../assets/graphics/faustaS.png");
+            platform = Graphics.LoadTexture("../../../../../assets/graphics/platformS.png");
+            ring = Graphics.LoadTexture("../../../../../assets/graphics/ringS.png");
+            iceFlower = Graphics.LoadTexture("../../../../../assets/graphics/ice flowerS.png");
 
             // Initialize player one
             playerOne.playerColour = Color.Red;
@@ -67,21 +67,23 @@ namespace MohawkGame2D
             // Handle collisions between players
             CollisionDetection();
 
-            // Draw assets
-           
-
-             Graphics.Draw(sonic, playerOne.position);
-            
-             Graphics.Draw(tails, playerTwo.position);
-
-            // Draw a platform at a fixed position
-            
-            
-                Graphics.Draw(platform, 600, 300);
-            
             // Draw players (circles)
             playerOne.Setup();
             playerTwo.Setup();
+
+            // Draw assets
+             Graphics.Draw(ground, 0, 560);
+
+             Graphics.Draw(plumber, playerOne.position);
+             Graphics.Draw(fausta, playerTwo.position);
+
+             Graphics.Draw(ring, 300, 495);
+             Graphics.Draw(iceFlower, 800, 500);
+
+            // Draw a platform at a fixed position
+            
+                Graphics.Draw(platform, 600, 300);
+            
         }
 
         private void CollisionDetection()
