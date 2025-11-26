@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Numerics;
+using Raylib_cs;
 
 namespace MohawkGame2D
 {
@@ -8,6 +9,9 @@ namespace MohawkGame2D
         public Vector2 position = new Vector2(0, 0);
         public Vector2 velocity;
         public int size = 25;
+
+        // Score for collected coins
+        public int score = 0;
 
         // Colour of Player
         public Color playerColour;

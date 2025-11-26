@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Numerics;
+using System.Collections.Generic;
 using Raylib_cs;
 
 namespace MohawkGame2D
@@ -14,6 +15,9 @@ namespace MohawkGame2D
         Texture2D sonic;
         Texture2D tails;
         Texture2D platform;
+
+        // Coins
+        List<Coin> coins = new List<Coin>();
 
         /// <summary>
         ///     Setup runs once before the game loop begins.
@@ -44,6 +48,13 @@ namespace MohawkGame2D
             playerTwo.keyJump = KeyboardInput.Up;
             playerTwo.keyLeft = KeyboardInput.Left;
             playerTwo.keyRight = KeyboardInput.Right;
+
+            // Create coins (use Init to save original spawn positions)
+            coins.Add(new Coin { respawnDelay = 5f }); coins[^1].Init(new Vector2(300, 450));
+            coins.Add(new Coin { respawnDelay = 5f }); coins[^1].Init(new Vector2(500, 400));
+            coins.Add(new Coin { respawnDelay = 5f }); coins[^1].Init(new Vector2(700, 350));
+            coins.Add(new Coin { respawnDelay = 5f }); coins[^1].Init(new Vector2(900, 450));
+            coins.Add(new Coin { respawnDelay = 5f }); coins[^1].Init(new Vector2(600, 250));
         }
 
         public void Update()
@@ -62,19 +73,36 @@ namespace MohawkGame2D
             CollisionDetection();
 
             // Draw assets
-           
-             Graphics.Draw(sonic, playerOne.position);
-            
-             Graphics.Draw(tails, playerTwo.position);
+            Graphics.Draw(sonic, playerOne.position);
+            Graphics.Draw(tails, playerTwo.position);
 
             // Draw a platform at a fixed position
-            
-            
-                Graphics.Draw(platform, 600, 300);
-            
+            Graphics.Draw(platform, 600, 300);
+
+            // Update, draw coins and check for collection
+            foreach (var coin in coins)
+            {
+                coin.Update();
+                coin.Draw();
+
+                if (coin.active)
+                {
+                    // allow either player to collect (playerOne first)
+                    if (coin.CheckCollected(playerOne)) { /* handled in CheckCollected */ }
+                    else
+                    {
+                        coin.CheckCollected(playerTwo);
+                    }
+                }
+            }
+
             // Draw players (circles)
             playerOne.Setup();
             playerTwo.Setup();
+
+            // Draw player scores on screen
+            Raylib.DrawText($"P1: {playerOne.score}", 10, 10, 20, Color.Black);
+            Raylib.DrawText($"P2: {playerTwo.score}", Window.Width - 120, 10, 20, Color.Black);
         }
 
         private void CollisionDetection()
