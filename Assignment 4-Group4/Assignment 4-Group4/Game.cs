@@ -10,6 +10,9 @@ namespace MohawkGame2D
         Player playerOne = new Player();
         Player playerTwo = new Player();
 
+        // Moving Platforms
+        MovingPlatform[] platforms = new MovingPlatform[1];
+
         // Graphics
         Texture2D sonic;
         Texture2D tails;
@@ -44,6 +47,15 @@ namespace MohawkGame2D
             playerTwo.keyJump = KeyboardInput.Up;
             playerTwo.keyLeft = KeyboardInput.Left;
             playerTwo.keyRight = KeyboardInput.Right;
+
+            // Draw moving platforms
+            for (int i = 0; i < platforms.Length; i++)
+            {
+                platforms[i] = new MovingPlatform();
+                
+                // All of the Random values determine the XY coord spawn, speed, and size of the moving platform
+                platforms[i].Setup(Random.Integer(100, 1100), Random.Integer(100, 500), Random.Integer(5, 10), Random.Integer(75, 175));
+            }
         }
 
         public void Update()
@@ -75,6 +87,11 @@ namespace MohawkGame2D
             // Draw players (circles)
             playerOne.Setup();
             playerTwo.Setup();
+
+            for (int i = 0; i < platforms.Length; i++)
+            {
+                platforms[i].Update();
+            }
         }
 
         private void CollisionDetection()
