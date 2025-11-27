@@ -71,7 +71,7 @@ namespace MohawkGame2D
             playerTwo.PlayerGravity();
 
             // Handle collisions between players
-            CollisionDetection();
+            PlayerOnPlayerCollisionDetection();
 
             // Draw assets
            
@@ -95,7 +95,7 @@ namespace MohawkGame2D
             }
         }
 
-        private void CollisionDetection()
+        private void PlayerOnPlayerCollisionDetection()
         {
             float distanceBetweenPlayers = Vector2.Distance(playerOne.position, playerTwo.position);
             float sumOfPlayerRadius = playerOne.size + playerTwo.size;

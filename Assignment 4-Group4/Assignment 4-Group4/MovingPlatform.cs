@@ -29,22 +29,32 @@ namespace MohawkGame2D
             // Movement of the platforms
             position += velocity * Time.DeltaTime;
 
+            // Platform sides for game window collision
+            float platformLeft = position.X;
+            float platformRight = position.X + width;
+            float platformTop = position.Y;
+            float platformBottom = position.Y + height;
+
             // Constrains the platforms to the game window
-            if (position.X <= Window.Width) // If platform bumps the left side of the window, reverse velocity
+            if (platformLeft <= 0) // If platform bumps the left side of the window, reverse velocity
             {
-                velocity = -velocity;
+                position.X = 0;
+                velocity.X = -velocity.X;
             }
-            if (position.X + width >= Window.Width) // If platform bumps the right side of the window, reverse velocity
+            if (platformRight >= Window.Width) // If platform bumps the right side of the window, reverse velocity
             {
-                velocity = -velocity;
+                position.X = Window.Width - width;
+                velocity.X = -velocity.X;
             }
-            if (position.Y <= Window.Height) // If platform bumps the top of the window, reverse velocity
+            if (platformTop <= 0) // If platform bumps the top of the window, reverse velocity
             {
-                velocity = -velocity;
+                position.Y = 0;
+                velocity.Y = -velocity.Y;
             }
-            if (position.Y + height >= Window.Height) // If platform bumps the bottom of the window, reverse velocity
+            if (platformBottom >= Window.Height) // If platform bumps the bottom of the window, reverse velocity
             {
-                velocity = -velocity;
+                position.Y = Window.Height - height;
+                velocity.Y = -velocity.Y;
             }
 
             // Draw the platforms
