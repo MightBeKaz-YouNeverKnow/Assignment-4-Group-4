@@ -27,9 +27,12 @@ namespace MohawkGame2D
         public void PlayerControls()
         {
             // Player Jump
-            if (Input.IsKeyboardKeyPressed(keyJump))
+            if (velocity.Y == 0)
             {
-                position.Y -= 100;
+                if (Input.IsKeyboardKeyPressed(keyJump))
+                {
+                    velocity.Y = -10;
+                }
             }
             // Player Move Left
             if (Input.IsKeyboardKeyDown(keyLeft))
