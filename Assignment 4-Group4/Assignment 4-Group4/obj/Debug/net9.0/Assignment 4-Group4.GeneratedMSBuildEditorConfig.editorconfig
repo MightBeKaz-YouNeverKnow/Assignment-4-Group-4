@@ -8,11 +8,7 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Assignment_4_Group4
-<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\pearc\OneDrive\Documents\GitHub\Assignment-4-Group-4\Assignment 4-Group4\Assignment 4-Group4\
-=======
-build_property.ProjectDir = C:\Users\james\OneDrive\Documents\GitHub\Assignment-4-Group-4\Assignment 4-Group4\Assignment 4-Group4\
->>>>>>> origin/jamesonphong/movingplatform
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.EffectiveAnalysisLevelStyle = 9.0

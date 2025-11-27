@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Numerics;
+using Raylib_cs;
 
 namespace MohawkGame2D
 {
     public class MovingPlatform
     {
         public Vector2 position;
-        Vector2 velocity;
+        public Vector2 velocity;
         public int width;
         public int height;
         Color color;
@@ -62,6 +63,53 @@ namespace MohawkGame2D
             Draw.LineColor = color;
             Draw.FillColor = color;
             Draw.Rectangle(position.X, position.Y, width, height);
+        }
+
+        /// <summary>
+        /// Resolve collision between this rectangular platform and a circular player.
+        /// - If player lands on top (previous Y + size was <= platform top) then place player on top and zero Y velocity.
+        /// - If collision happens from the side or bottom, push player out along the collision vector.
+        /// Carries player horizontally by platform velocity when landed.
+        /// </summary>
+        public void ResolveCollision(Player player)
+        {
+            // Nearest point on the rectangle to the player's circle center
+            float nearestX = Math.Clamp(player.position.X, position.X, position.X + width);
+            float nearestY = Math.Clamp(player.position.Y, position.Y, position.Y + height);
+            var nearest = new Vector2(nearestX, nearestY);
+
+            float dist = Vector2.Distance(player.position, nearest);
+            if (dist >= player.size) return; // no collision
+
+            // Determine if the player was above the platform in the previous frame ( landing case )
+            if (player.previousPosition.Y + player.size <= position.Y)
+            {
+                // Land on top of the platform
+                player.position.Y = position.Y - player.size;
+                player.velocity.Y = 0;
+                player.onPlatform = true;
+
+                // Carry horizontally with the platform (frame-based)
+                player.position += new Vector2(velocity.X * Time.DeltaTime, 0);
+                return;
+            }
+
+            // Otherwise handle a simple push-out along collision normal
+            Vector2 pushDir = player.position - nearest;
+            if (pushDir == Vector2.Zero)
+            {
+                // arbitrary push if exactly overlapped
+                pushDir = new Vector2(0, -1);
+            }
+            pushDir = Vector2.Normalize(pushDir);
+            float penetration = player.size - dist;
+            player.position += pushDir * penetration;
+
+            // If the collision had a large vertical component push, null Y velocity to avoid sticking
+            if (Math.Abs(pushDir.Y) > Math.Abs(pushDir.X) * 0.5f)
+            {
+                player.velocity.Y = 0;
+            }
         }
     }
 }

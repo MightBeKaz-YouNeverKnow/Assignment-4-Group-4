@@ -11,13 +11,13 @@ namespace MohawkGame2D
         Player playerOne = new Player();
         Player playerTwo = new Player();
 
-        // Moving Platforms
-        MovingPlatform[] platforms = new MovingPlatform[5];
-
         // Graphics
         Texture2D sonic;
         Texture2D tails;
         Texture2D platform;
+
+        // Moving platforms
+        List<MovingPlatform> movingPlatforms = new List<MovingPlatform>();
 
         // Coins
         List<Coin> coins = new List<Coin>();
@@ -52,31 +52,35 @@ namespace MohawkGame2D
             playerTwo.keyLeft = KeyboardInput.Left;
             playerTwo.keyRight = KeyboardInput.Right;
 
+            // Create moving platforms
+            var mp1 = new MovingPlatform();
+            mp1.Setup(200, 450, 60, 150);
+            movingPlatforms.Add(mp1);
 
-            // Create coins (use Init to save original spawn positions)
+            var mp2 = new MovingPlatform();
+            mp2.Setup(600, 350, 80, 120);
+            movingPlatforms.Add(mp2);
+
+            var mp3 = new MovingPlatform();
+            mp3.Setup(900, 250, 50, 200);
+            movingPlatforms.Add(mp3);
+
+            // Create coins (positions are examples; adjust as desired)
             coins.Add(new Coin { respawnDelay = 5f }); coins[^1].Init(new Vector2(300, 450));
             coins.Add(new Coin { respawnDelay = 5f }); coins[^1].Init(new Vector2(500, 400));
             coins.Add(new Coin { respawnDelay = 5f }); coins[^1].Init(new Vector2(700, 350));
             coins.Add(new Coin { respawnDelay = 5f }); coins[^1].Init(new Vector2(900, 450));
             coins.Add(new Coin { respawnDelay = 5f }); coins[^1].Init(new Vector2(600, 250));
-
-            // Draw moving platforms
-            for (int i = 0; i < platforms.Length; i++)
-            {
-                platforms[i] = new MovingPlatform();
-                
-                // All of the Random values determine the XY coord spawn, speed, and width size of the moving platform
-                platforms[i].Setup(Random.Integer(100, 1100), Random.Integer(100, 500), // XY Coords
-                                   Random.Integer(100, 200), // Speed
-                                   Random.Integer(75, 175)); // Width Size
-            }
-
         }
 
         public void Update()
         {
             // Clear background
             Window.ClearBackground(Color.OffWhite);
+
+            // Prepare players for this frame (store previous position for collision logic)
+            playerOne.BeginFrame();
+            playerTwo.BeginFrame();
 
             // Run controls and physics for both players
             playerOne.PlayerControls();
@@ -85,14 +89,27 @@ namespace MohawkGame2D
             playerTwo.PlayerControls();
             playerTwo.PlayerGravity();
 
-            // Handle collisions between players
-            PlayerOnPlayerCollisionDetection();
+            // Update moving platforms (they also draw themselves)
+            foreach (var mp in movingPlatforms)
+            {
+                mp.Update();
+            }
 
-            // Draw assets
+            // Resolve collisions between players and moving platforms
+            foreach (var mp in movingPlatforms)
+            {
+                mp.ResolveCollision(playerOne);
+                mp.ResolveCollision(playerTwo);
+            }
+
+            // Handle collisions between players
+            CollisionDetection();
+
+            // Draw assets (player sprites)
             Graphics.Draw(sonic, playerOne.position);
             Graphics.Draw(tails, playerTwo.position);
 
-            // Draw a platform at a fixed position
+            // Draw a platform texture at a fixed position (kept for compatibility)
             Graphics.Draw(platform, 600, 300);
 
             // Update, draw coins and check for collection
@@ -103,8 +120,7 @@ namespace MohawkGame2D
 
                 if (coin.active)
                 {
-                    // allow either player to collect (playerOne first)
-                    if (coin.CheckCollected(playerOne)) { /* handled in CheckCollected */ }
+                    if (coin.CheckCollected(playerOne)) { }
                     else
                     {
                         coin.CheckCollected(playerTwo);
@@ -116,21 +132,12 @@ namespace MohawkGame2D
             playerOne.Setup();
             playerTwo.Setup();
 
-
             // Draw player scores on screen
             Raylib.DrawText($"P1: {playerOne.score}", 10, 10, 20, Color.Black);
             Raylib.DrawText($"P2: {playerTwo.score}", Window.Width - 120, 10, 20, Color.Black);
-
-            // Ensures platforms are constantly moving
-            for (int i = 0; i < platforms.Length; i++)
-            {
-                platforms[i].Update();
-                // PlayerOnPlatformCollisionDetection(platforms[i]);
-            }
-
         }
 
-        private void PlayerOnPlayerCollisionDetection()
+        private void CollisionDetection()
         {
             float distanceBetweenPlayers = Vector2.Distance(playerOne.position, playerTwo.position);
             float sumOfPlayerRadius = playerOne.size + playerTwo.size;

@@ -73,19 +73,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-
       "projectUniqueName": "C:\\Users\\pearc\\OneDrive\\Documents\\GitHub\\Assignment-4-Group-4\\Assignment 4-Group4\\Assignment 4-Group4\\Assignment 4-Group4.csproj",
       "projectName": "MohawkGame10003.2DGameTemplate",
       "projectPath": "C:\\Users\\pearc\\OneDrive\\Documents\\GitHub\\Assignment-4-Group-4\\Assignment 4-Group4\\Assignment 4-Group4\\Assignment 4-Group4.csproj",
       "packagesPath": "C:\\Users\\pearc\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\pearc\\OneDrive\\Documents\\GitHub\\Assignment-4-Group-4\\Assignment 4-Group4\\Assignment 4-Group4\\obj\\",
-
-      "projectUniqueName": "C:\\Users\\james\\OneDrive\\Documents\\GitHub\\Assignment-4-Group-4\\Assignment 4-Group4\\Assignment 4-Group4\\Assignment 4-Group4.csproj",
-      "projectName": "MohawkGame10003.2DGameTemplate",
-      "projectPath": "C:\\Users\\james\\OneDrive\\Documents\\GitHub\\Assignment-4-Group-4\\Assignment 4-Group4\\Assignment 4-Group4\\Assignment 4-Group4.csproj",
-      "packagesPath": "C:\\Users\\james\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\james\\OneDrive\\Documents\\GitHub\\Assignment-4-Group-4\\Assignment 4-Group4\\Assignment 4-Group4\\obj\\",
-
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -148,5 +140,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\pearc\\OneDrive\\Documents\\GitHub\\Assignment-4-Group-4\\Assignment 4-Group4\\Assignment 4-Group4\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0."
+    }
+  ]
 }
