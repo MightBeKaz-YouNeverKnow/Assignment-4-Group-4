@@ -9,9 +9,8 @@ namespace MohawkGame2D
         public Vector2 velocity;
         public int size = 25;
 
-        // Colour of Player + Transparent Hitbox
+        // Colour of Player
         public Color playerColour;
-        Color transparent = new Color(0, 0, 0, 0);
 
         // Keyboard Input Controls
         public KeyboardInput keyJump;
@@ -24,11 +23,6 @@ namespace MohawkGame2D
             Draw.LineColor = Color.Black;
             Draw.FillColor = playerColour;
             Draw.Circle(position.X, position.Y, size);
-
-            // Draw Transparent Square Hitbox on Player
-            Draw.LineSize = 0;
-            Draw.FillColor = transparent;
-            Draw.Square(position.X - size, position.Y - size, size * 2);
         }
         public void PlayerControls()
         {
