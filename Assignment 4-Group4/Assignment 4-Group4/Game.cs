@@ -17,6 +17,7 @@ namespace MohawkGame2D
         Texture2D platform;
         Texture2D ring;
         Texture2D iceFlower;
+        Texture2D background;
 
         /// <summary>
         ///     Setup runs once before the game loop begins.
@@ -34,6 +35,7 @@ namespace MohawkGame2D
             platform = Graphics.LoadTexture("../../../../../assets/graphics/platformS.png");
             ring = Graphics.LoadTexture("../../../../../assets/graphics/ringS.png");
             iceFlower = Graphics.LoadTexture("../../../../../assets/graphics/ice flowerS.png");
+            background = Graphics.LoadTexture("../../../../../assets/graphics/background.png");
 
             // Initialize player one
             playerOne.playerColour = Color.Red;
@@ -72,6 +74,8 @@ namespace MohawkGame2D
             playerTwo.Setup();
 
             // Draw assets
+             Graphics.Draw(background, 0, 0);
+
              Graphics.Draw(ground, 0, 560);
 
              Graphics.Draw(plumber, playerOne.position);
