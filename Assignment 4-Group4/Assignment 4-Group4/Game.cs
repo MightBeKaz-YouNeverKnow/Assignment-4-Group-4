@@ -11,7 +11,7 @@ namespace MohawkGame2D
         Player playerTwo = new Player();
 
         // Moving Platforms
-        MovingPlatform[] platforms = new MovingPlatform[1];
+        MovingPlatform[] platforms = new MovingPlatform[5];
 
         // Graphics
         Texture2D sonic;
@@ -55,7 +55,7 @@ namespace MohawkGame2D
                 
                 // All of the Random values determine the XY coord spawn, speed, and width size of the moving platform
                 platforms[i].Setup(Random.Integer(100, 1100), Random.Integer(100, 500), // XY Coords
-                                   Random.Integer(5, 10), // Speed
+                                   Random.Integer(100, 200), // Speed
                                    Random.Integer(75, 175)); // Width Size
             }
         }
