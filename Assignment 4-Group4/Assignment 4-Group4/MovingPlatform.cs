@@ -10,7 +10,6 @@ namespace MohawkGame2D
         public int width;
         public int height;
         Color color;
-        Color transparent = new Color(0, 0, 0, 0);
         public void Setup(int x, int y, int speed, int w)
         {
             // Spawn position of platforms
@@ -63,11 +62,6 @@ namespace MohawkGame2D
             Draw.LineColor = color;
             Draw.FillColor = color;
             Draw.Rectangle(position.X, position.Y, width, height);
-
-            // Draw ellipse shaped transparent hitbox
-            Draw.LineSize = 0;
-            Draw.FillColor = transparent;
-            Draw.Ellipse(position.X + (width / 2), position.Y + (height / 2), width, height);
         }
     }
 }
