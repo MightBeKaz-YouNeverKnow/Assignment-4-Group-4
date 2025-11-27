@@ -1,0 +1,23 @@
+-=- ISSUES PT.1 -=-
+
+- Moving Platforms move outside of Game Window Bounds
+- Players do not collide with Platforms
+
+-=- POSSIBLE SOLUTIONS PT.1 -=-
+
+- Add variables storing the value of the Platform's sides
+- Added conditional statements checking if the Platform's sides collide with the Game Window Bounds
+- Reverse the Moving Platform's velocity once the Platform's collide with the Game Window Bounds
+- Create a Square Transparent Hitbox on the Player's Avatar to allow them to collide with the Rectangular Platforms
+
+-=- ISSUES PT.2 -=-
+
+- Players still do not collide with the Platforms
+
+-=- POSSIBLE SOLUTIONS PT.2 -=-
+
+- Instead of a Square Transparent Hitbox on the Players, draw an Ellipse Transparent Hitbox on the Platforms
+
+-=- ISSUES PT.3 -=-
+
+- Players still do not collide with the Platforms
