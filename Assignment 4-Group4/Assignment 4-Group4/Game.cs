@@ -11,6 +11,9 @@ namespace MohawkGame2D
         Player playerOne = new Player();
         Player playerTwo = new Player();
 
+        // Moving Platforms
+        MovingPlatform[] platforms = new MovingPlatform[5];
+
         // Graphics
         Texture2D sonic;
         Texture2D tails;
@@ -49,12 +52,25 @@ namespace MohawkGame2D
             playerTwo.keyLeft = KeyboardInput.Left;
             playerTwo.keyRight = KeyboardInput.Right;
 
+
             // Create coins (use Init to save original spawn positions)
             coins.Add(new Coin { respawnDelay = 5f }); coins[^1].Init(new Vector2(300, 450));
             coins.Add(new Coin { respawnDelay = 5f }); coins[^1].Init(new Vector2(500, 400));
             coins.Add(new Coin { respawnDelay = 5f }); coins[^1].Init(new Vector2(700, 350));
             coins.Add(new Coin { respawnDelay = 5f }); coins[^1].Init(new Vector2(900, 450));
             coins.Add(new Coin { respawnDelay = 5f }); coins[^1].Init(new Vector2(600, 250));
+
+            // Draw moving platforms
+            for (int i = 0; i < platforms.Length; i++)
+            {
+                platforms[i] = new MovingPlatform();
+                
+                // All of the Random values determine the XY coord spawn, speed, and width size of the moving platform
+                platforms[i].Setup(Random.Integer(100, 1100), Random.Integer(100, 500), // XY Coords
+                                   Random.Integer(100, 200), // Speed
+                                   Random.Integer(75, 175)); // Width Size
+            }
+
         }
 
         public void Update()
@@ -70,7 +86,7 @@ namespace MohawkGame2D
             playerTwo.PlayerGravity();
 
             // Handle collisions between players
-            CollisionDetection();
+            PlayerOnPlayerCollisionDetection();
 
             // Draw assets
             Graphics.Draw(sonic, playerOne.position);
@@ -100,12 +116,21 @@ namespace MohawkGame2D
             playerOne.Setup();
             playerTwo.Setup();
 
+
             // Draw player scores on screen
             Raylib.DrawText($"P1: {playerOne.score}", 10, 10, 20, Color.Black);
             Raylib.DrawText($"P2: {playerTwo.score}", Window.Width - 120, 10, 20, Color.Black);
+
+            // Ensures platforms are constantly moving
+            for (int i = 0; i < platforms.Length; i++)
+            {
+                platforms[i].Update();
+                // PlayerOnPlatformCollisionDetection(platforms[i]);
+            }
+
         }
 
-        private void CollisionDetection()
+        private void PlayerOnPlayerCollisionDetection()
         {
             float distanceBetweenPlayers = Vector2.Distance(playerOne.position, playerTwo.position);
             float sumOfPlayerRadius = playerOne.size + playerTwo.size;

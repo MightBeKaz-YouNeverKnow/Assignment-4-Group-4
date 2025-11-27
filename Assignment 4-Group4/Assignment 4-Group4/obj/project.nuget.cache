@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "8fwH8IwjEW8=",
   "success": true,
   "projectFilePath": "C:\\Users\\pearc\\OneDrive\\Documents\\GitHub\\Assignment-4-Group-4\\Assignment 4-Group4\\Assignment 4-Group4\\Assignment 4-Group4.csproj",
+=======
+  "dgSpecHash": "XraK4vooiJI=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\james\\OneDrive\\Documents\\GitHub\\Assignment-4-Group-4\\Assignment 4-Group4\\Assignment 4-Group4\\Assignment 4-Group4.csproj",
+>>>>>>> origin/jamesonphong/movingplatform
   "expectedPackageFiles": [
     "C:\\Users\\pearc\\.nuget\\packages\\raylib-cs\\7.0.1\\raylib-cs.7.0.1.nupkg.sha512"
   ],
