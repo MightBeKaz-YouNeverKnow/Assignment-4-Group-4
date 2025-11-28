@@ -12,9 +12,13 @@ namespace MohawkGame2D
         Player playerTwo = new Player();
 
         // Graphics
-        Texture2D sonic;
-        Texture2D tails;
+        Texture2D ground;
+        Texture2D plumber;
+        Texture2D fausta;
         Texture2D platform;
+        Texture2D ring;
+        Texture2D iceFlower;
+        Texture2D background;
 
         // Moving platforms
         List<MovingPlatform> movingPlatforms = new List<MovingPlatform>();
@@ -32,9 +36,13 @@ namespace MohawkGame2D
             Window.SetSize(1200, 600);
 
             // Load graphics (paths are relative to executable; adjust if needed)
-            sonic = Graphics.LoadTexture("../../../../../assets/graphics/sonic.png");
-            tails = Graphics.LoadTexture("../../../../../assets/graphics/tails.png");
-            platform = Graphics.LoadTexture("../../../../../assets/graphics/platform.png");
+            ground = Graphics.LoadTexture("../../../../../assets/graphics/ground.png");
+            plumber = Graphics.LoadTexture("../../../../../assets/graphics/plumberS.png");
+            fausta = Graphics.LoadTexture("../../../../../assets/graphics/faustaS.png");
+            platform = Graphics.LoadTexture("../../../../../assets/graphics/platformS.png");
+            ring = Graphics.LoadTexture("../../../../../assets/graphics/ringS.png");
+            iceFlower = Graphics.LoadTexture("../../../../../assets/graphics/ice flowerS.png");
+            background = Graphics.LoadTexture("../../../../../assets/graphics/background.png");
 
             // Initialize player one
             playerOne.playerColour = Color.Red;
