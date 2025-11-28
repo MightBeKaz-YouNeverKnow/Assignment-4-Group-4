@@ -113,6 +113,8 @@ namespace MohawkGame2D
             // Handle collisions between players
             CollisionDetection();
 
+            Texture2D sonic = default;
+            Texture2D tails = default;
             // Draw assets (player sprites)
             Graphics.Draw(sonic, playerOne.position);
             Graphics.Draw(tails, playerTwo.position);
