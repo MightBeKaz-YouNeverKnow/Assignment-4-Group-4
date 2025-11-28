@@ -91,13 +91,8 @@ namespace MohawkGame2D
             if (loadedMusic.TryGetValue(filePath, out Music value))
                 return value;
 
-            // Load asset from disk. Assign it file path and file name.
-            Music music = new()
-            {
-                RaylibMusic = Raylib.LoadMusicStream(filePath),
-                FilePath = filePath,
-                FileName = Path.GetFileNameWithoutExtension(filePath)
-            };
+            // Load asset from disk.
+            Music music = Raylib.LoadMusicStream(filePath);
 
             // Add to reference dictionary for data reused on duplicate load calls.
             loadedMusic.Add(filePath, music);
@@ -123,13 +118,8 @@ namespace MohawkGame2D
             if (loadedSounds.TryGetValue(filePath, out Sound value))
                 return value;
 
-            // Load asset from disk. Assign it file path and file name.
-            Sound sound = new()
-            {
-                RaylibSound = Raylib.LoadSound(filePath),
-                FilePath = filePath,
-                FileName = Path.GetFileNameWithoutExtension(filePath)
-            };
+            // Load asset from disk.
+            Sound sound = Raylib.LoadSound(filePath);
 
             // Add to reference dictionary for data reused on duplicate load calls.
             loadedSounds.Add(filePath, sound);
@@ -234,7 +224,19 @@ namespace MohawkGame2D
         /// <param name="music">The music to unload.</param>
         public static void UnloadMusic(Music music)
         {
-            loadedMusic.Remove(music.FilePath);
+            // Remove the music from the dictionary by value.
+            string? keyToRemove = null;
+            foreach (var kvp in loadedMusic)
+            {
+                if (EqualityComparer<Music>.Default.Equals(kvp.Value, music))
+                {
+                    keyToRemove = kvp.Key;
+                    break;
+                }
+            }
+            if (keyToRemove != null)
+                loadedMusic.Remove(keyToRemove);
+
             Raylib.UnloadMusicStream(music);
         }
 
@@ -244,7 +246,19 @@ namespace MohawkGame2D
         /// <param name="sound">The sound to unload.</param>
         public static void UnloadSound(Sound sound)
         {
-            loadedSounds.Remove(sound.FilePath);
+            // Remove the sound from the dictionary by value.
+            string? keyToRemove = null;
+            foreach (var kvp in loadedSounds)
+            {
+                if (EqualityComparer<Sound>.Default.Equals(kvp.Value, sound))
+                {
+                    keyToRemove = kvp.Key;
+                    break;
+                }
+            }
+            if (keyToRemove != null)
+                loadedSounds.Remove(keyToRemove);
+
             Raylib.UnloadSound(sound);
         }
 

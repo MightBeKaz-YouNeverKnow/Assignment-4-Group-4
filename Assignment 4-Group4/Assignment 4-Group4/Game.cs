@@ -7,9 +7,10 @@ namespace MohawkGame2D
 {
     public class Game
     {
-        // Two players
+        // Two players & music
         Player playerOne = new Player();
         Player playerTwo = new Player();
+        OST OST = new OST();
 
         // Graphics
         Texture2D ground;
@@ -79,6 +80,9 @@ namespace MohawkGame2D
             coins.Add(new Coin { respawnDelay = 5f }); coins[^1].Init(new Vector2(700, 350));
             coins.Add(new Coin { respawnDelay = 5f }); coins[^1].Init(new Vector2(900, 450));
             coins.Add(new Coin { respawnDelay = 5f }); coins[^1].Init(new Vector2(600, 250));
+
+            //Music
+            Audio.Play(OST.FUN);
         }
 
         public void Update()
