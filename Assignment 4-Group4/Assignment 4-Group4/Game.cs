@@ -82,13 +82,24 @@ namespace MohawkGame2D
             coins.Add(new Coin { respawnDelay = 5f }); coins[^1].Init(new Vector2(600, 250));
 
             //Music
-            Audio.Play(OST.FUN);
-        }
+            if (Raylib.GetRandomValue(0, 2) == 0)
+            {
+                Audio.Play(OST.FUN);
+            }
+            if (Raylib.GetRandomValue(0, 2) == 1)
+            {
+                Audio.Play(OST.TOKYO);
+            }
+        }  
+
 
         public void Update()
         {
             // Clear background
             Window.ClearBackground(Color.OffWhite);
+
+            Graphics.Draw(background, 0, 0);
+            Graphics.Draw(ground, 0, 600);
 
             // Prepare players for this frame (store previous position for collision logic)
             playerOne.BeginFrame();
@@ -120,11 +131,11 @@ namespace MohawkGame2D
             Texture2D sonic = default;
             Texture2D tails = default;
             // Draw assets (player sprites)
-            Graphics.Draw(sonic, playerOne.position);
-            Graphics.Draw(tails, playerTwo.position);
+            //Graphics.Draw(sonic, playerOne.position);
+            //Graphics.Draw(tails, playerTwo.position);
 
             // Draw a platform texture at a fixed position (kept for compatibility)
-            Graphics.Draw(platform, 600, 300);
+            //Graphics.Draw(platform, 600, 300);
 
             // Update, draw coins and check for collection
             foreach (var coin in coins)
