@@ -8,9 +8,13 @@ using Raylib_cs;
 
 namespace MohawkGame2D
 {
-public class OST
-{        public Music FUN = Audio.LoadMusic("../../../../../Audio/Music/ytdl.canehill.info - MORE MORE JUMP - FUN (192 KBps).wav");
-        public Music TOKYO = Audio.LoadMusic("../../../../../Audio/Music/ytdl.canehill.info - Jun Senoue - Tokyo (Westopolis - TeddyLoid x Jun Senoue Remix) (192 KBps)");
-
+    public class OST
+    {
+        public Music FUN = Audio.LoadMusic("../../../../../Audio/Music/ytdl.canehill.info - MORE MORE JUMP - FUN (192 KBps).wav");
+        public Music TOKYO = Audio.LoadMusic("../../../../../Audio/Music/ytdl.canehill.info - Jun Senoue - Tokyo (Westopolis - TeddyLoid x Jun Senoue Remix) (192 KBps).wav");
     }
-}
+
+   
+    
+
+}             

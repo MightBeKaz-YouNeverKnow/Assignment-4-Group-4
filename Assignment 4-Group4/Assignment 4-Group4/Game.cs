@@ -11,6 +11,7 @@ namespace MohawkGame2D
         Player playerOne = new Player();
         Player playerTwo = new Player();
         OST OST = new OST();
+        
 
         // Graphics
         Texture2D ground;
@@ -81,16 +82,20 @@ namespace MohawkGame2D
             coins.Add(new Coin { respawnDelay = 5f }); coins[^1].Init(new Vector2(900, 450));
             coins.Add(new Coin { respawnDelay = 5f }); coins[^1].Init(new Vector2(600, 250));
 
-            //Music
+            //Randomly play one of two music tracks
             if (Raylib.GetRandomValue(0, 2) == 0)
             {
                 Audio.Play(OST.FUN);
             }
-            if (Raylib.GetRandomValue(0, 2) == 1)
+            if (Raylib.GetRandomValue(0, 2) == 1 && Raylib.GetRandomValue(0, 2) != 0)
             {
                 Audio.Play(OST.TOKYO);
             }
-        }  
+
+
+            
+        }
+          
 
 
         public void Update()
